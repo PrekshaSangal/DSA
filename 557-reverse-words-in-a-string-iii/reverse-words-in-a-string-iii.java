@@ -3,7 +3,8 @@ class Solution {
         String[] words=s.split(" ");
         StringBuilder sb= new StringBuilder();
         for(String word:words){
-            sb.append(new StringBuilder(word).reverse()).append(" ");
+            StringBuilder revword= new StringBuilder(word).reverse();
+            sb.append(revword).append(" ");
         }
         return sb.toString().trim();
     }
