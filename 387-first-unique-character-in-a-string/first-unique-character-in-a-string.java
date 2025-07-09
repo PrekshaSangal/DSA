@@ -1,30 +1,14 @@
 class Solution {
     public int firstUniqChar(String s) {
-        LinkedHashMap<Character,Integer> map=new LinkedHashMap<>();
-        int n=s.length();
-        for(int i=0;i<n;i++){
-            if(map.containsKey(s.charAt(i))){
-                map.put(s.charAt(i),map.get(s.charAt(i))+1);
-            }
-            else{
-                map.put(s.charAt(i),1);
-            }
+       Map<Character,Integer> map=new HashMap<>();
+       for(char c: s.toCharArray()){
+        map.put(c,map.getOrDefault(c,0)+1);
+       }
+       for(int i=0;i<s.length();i++){
+        if(map.get(s.charAt(i))==1){
+            return i;
         }
-        char x=' ';
-        for(char i:map.keySet()){
-            if(map.get(i)==1){
-                x=i;
-                break;
-            }
-        }
-        if(x==' '){
-            return -1;
-        }
-        for(int i=0;i<n;i++){
-            if(s.charAt(i)==x){
-                return i;
-            }
-        }
-        return -1;
+       }
+       return -1;
     }
 }
